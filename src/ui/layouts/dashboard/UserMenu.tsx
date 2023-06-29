@@ -1,6 +1,6 @@
 "use client";
 
-import { Button, Menu } from "@mantine/core";
+import { Avatar, Button, Menu } from "@mantine/core";
 import {
   IconArrowsLeftRight,
   IconMessageCircle,
@@ -13,7 +13,9 @@ const UserMenu = () => {
   return (
     <Menu shadow="md" width={200}>
       <Menu.Target>
-        <Button>Toggle menu</Button>
+        <Avatar variant="filled" color={"blue"} className="cursor-pointer">
+          R
+        </Avatar>
       </Menu.Target>
 
       <Menu.Dropdown>

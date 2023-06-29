@@ -1,10 +1,11 @@
 "use client";
 
-import { Header } from "@mantine/core";
+import { Header, useMantineColorScheme } from "@mantine/core";
 import React, { PropsWithChildren } from "react";
 import UserMenu from "./UserMenu";
 
 const DashboardHeader: React.FC<PropsWithChildren> = ({ children }) => {
+  const { colorScheme, toggleColorScheme } = useMantineColorScheme();
   return (
     <Header
       height={60}
@@ -14,7 +15,8 @@ const DashboardHeader: React.FC<PropsWithChildren> = ({ children }) => {
       className="flex items-center justify-end"
     >
       {children}
-      <div className=" justify-self-end">
+      <div className="justify-self-end">
+        <button onClick={() => toggleColorScheme()}>dark</button>
         <UserMenu />
       </div>
     </Header>
