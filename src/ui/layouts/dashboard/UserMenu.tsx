@@ -1,7 +1,13 @@
 "use client";
 
-import { Menu } from "@mantine/core";
-import React from "react";
+import { Button, Menu } from "@mantine/core";
+import {
+  IconArrowsLeftRight,
+  IconMessageCircle,
+  IconPhoto,
+  IconSettings,
+  IconTrash,
+} from "@tabler/icons-react";
 
 const UserMenu = () => {
   return (
@@ -15,16 +21,6 @@ const UserMenu = () => {
         <Menu.Item icon={<IconSettings size={14} />}>Settings</Menu.Item>
         <Menu.Item icon={<IconMessageCircle size={14} />}>Messages</Menu.Item>
         <Menu.Item icon={<IconPhoto size={14} />}>Gallery</Menu.Item>
-        <Menu.Item
-          icon={<IconSearch size={14} />}
-          rightSection={
-            <Text size="xs" color="dimmed">
-              ⌘K
-            </Text>
-          }
-        >
-          Search
-        </Menu.Item>
 
         <Menu.Divider />
 

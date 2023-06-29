@@ -10,6 +10,7 @@ import {
 import React, { PropsWithChildren } from "react";
 import DashboardMenu from "./dashboard-menu";
 import { useDisclosure } from "@mantine/hooks";
+import DashboardHeader from "./DashboardHeader";
 
 const DashboardLayout: React.FC<PropsWithChildren> = ({ children }) => {
   const [opened, handler] = useDisclosure(false);
@@ -21,7 +22,7 @@ const DashboardLayout: React.FC<PropsWithChildren> = ({ children }) => {
       layout="alt"
       navbar={<DashboardMenu opened={opened} />}
       header={
-        <Header height={60} p="xs">
+        <DashboardHeader>
           <MediaQuery largerThan="sm" styles={{ display: "none" }}>
             <Burger
               opened={opened}
@@ -31,7 +32,7 @@ const DashboardLayout: React.FC<PropsWithChildren> = ({ children }) => {
               mr="xl"
             />
           </MediaQuery>
-        </Header>
+        </DashboardHeader>
       }
       styles={(theme) => ({
         main: {
