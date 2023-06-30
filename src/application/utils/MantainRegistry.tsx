@@ -37,7 +37,20 @@ const MantainRegistry: React.FC<PropsWithChildren> = ({ children }) => {
         colorScheme={colorScheme}
         toggleColorScheme={toggleColorScheme}
       >
-        <MantineProvider emotionCache={emotionCache} theme={{ colorScheme }}>
+        <MantineProvider
+          emotionCache={emotionCache}
+          theme={{
+            colorScheme,
+            globalStyles: (theme) => ({
+              body: {
+                color:
+                  theme.colorScheme === "dark"
+                    ? `${theme.colors.dark[0]} !important`
+                    : theme.black,
+              },
+            }),
+          }}
+        >
           {children}
         </MantineProvider>
       </ColorSchemeProvider>

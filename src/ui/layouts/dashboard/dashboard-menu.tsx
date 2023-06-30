@@ -17,9 +17,7 @@ const DashboardMenu: React.FC<IDashboardProp> = ({ opened }) => {
       hidden={!opened}
     >
       <Navbar.Section p={"sm"}>
-        <Title order={4} color="gray.7">
-          Application {opened}
-        </Title>
+        <Title order={4}>Application {opened}</Title>
         <Text>version 0.0.1</Text>
       </Navbar.Section>
       <Navbar.Section grow mt="md" component={ScrollArea}>
