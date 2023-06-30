@@ -8,6 +8,8 @@ export const env = createEnv({
    */
   server: {
     NODE_ENV: z.string().default("development"),
+    IDENTITY_SERVER_HOST: z.string().url(),
+    IDENTITY_APPID: z.string().url(),
   },
   /*
    * Environment variables available on the client (and server).
@@ -25,6 +27,8 @@ export const env = createEnv({
    */
   runtimeEnv: {
     NODE_ENV: process.env.NODE_ENV,
+    IDENTITY_APPID: process.env.IDENTITY_APPID,
+    IDENTITY_SERVER_HOST: process.env.IDENTITY_SERVER_HOST,
     NEXT_PUBLIC_GRAPHQL_API_URL: process.env.NEXT_PUBLIC_GRAPHQL_API_URL,
   },
 });
