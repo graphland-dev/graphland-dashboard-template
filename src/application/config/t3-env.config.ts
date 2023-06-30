@@ -9,7 +9,19 @@ export const env = createEnv({
   server: {
     NODE_ENV: z.string().default("development"),
     IDENTITY_SERVER_HOST: z.string().url(),
-    IDENTITY_APPID: z.string().url(),
+    IDENTITY_APPID: z.string(),
+
+    NEXTAUTH_SECRET:
+      process.env.NODE_ENV === "production"
+        ? z.string().min(1)
+        : z.string().min(1).optional(),
+    NEXTAUTH_URL: z.preprocess(
+      // This makes Vercel deployments not fail if you don't set NEXTAUTH_URL
+      // Since NextAuth.js automatically uses the VERCEL_URL if present.
+      (str) => process.env.VERCEL_URL ?? str,
+      // VERCEL_URL doesn't include `https` so it cant be validated as a URL
+      process.env.VERCEL ? z.string().min(1) : z.string().url()
+    ),
   },
   /*
    * Environment variables available on the client (and server).
@@ -27,6 +39,8 @@ export const env = createEnv({
    */
   runtimeEnv: {
     NODE_ENV: process.env.NODE_ENV,
+    NEXTAUTH_SECRET: process.env.NEXTAUTH_SECRET,
+    NEXTAUTH_URL: process.env.NEXTAUTH_URL,
     IDENTITY_APPID: process.env.IDENTITY_APPID,
     IDENTITY_SERVER_HOST: process.env.IDENTITY_SERVER_HOST,
     NEXT_PUBLIC_GRAPHQL_API_URL: process.env.NEXT_PUBLIC_GRAPHQL_API_URL,
