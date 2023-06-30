@@ -19,9 +19,6 @@ const Page = () => {
       <Text c="blue">Blue text</Text>
       <Text c="teal.4">Teal 4 text</Text>
       <Text tt="uppercase">Uppercase</Text>
-      <Text tt="capitalize">capitalized text</Text>
-      <Text ta="center">Aligned to center</Text>
-      <Text ta="right">Aligned to right</Text>
     </div>
   );
 };
