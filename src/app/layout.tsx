@@ -1,6 +1,5 @@
 import AppGlobalProvider from "@/application/providers/AppGlobalProvider";
 import "@/styles/globals.css";
-import DashboardLayout from "@/ui/layouts/dashboard/dashboard";
 import React, { PropsWithChildren } from "react";
 
 export const metadata = {
@@ -29,9 +28,7 @@ const RootLayout: React.FC<PropsWithChildren> = ({ children }) => {
   return (
     <html lang="en">
       <body>
-        <AppGlobalProvider>
-          <DashboardLayout>{children}</DashboardLayout>
-        </AppGlobalProvider>
+        <AppGlobalProvider>{children}</AppGlobalProvider>
       </body>
     </html>
   );
