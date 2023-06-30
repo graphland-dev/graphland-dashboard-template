@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "generate-graphql": "graphql-codegen -c src/application/config/codegen.config.ts"
   },
   "dependencies": {
     "@apollo/client": "^3.7.16",
@@ -29,10 +30,13 @@
     "postcss": "8.4.24",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "tailwindcss": "3.3.2",
-    "typescript": "5.1.6"
+    "tailwindcss": "3.3.2"
   },
   "devDependencies": {
-    "@types/lodash": "^4.14.195"
+    "@graphql-codegen/cli": "^4.0.1",
+    "@graphql-codegen/client-preset": "^4.0.1",
+    "@types/lodash": "^4.14.195",
+    "ts-node": "^10.9.1",
+    "typescript": "^5.1.6"
   }
 }

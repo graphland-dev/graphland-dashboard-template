@@ -5,6 +5,8 @@ import companies from "./data.json";
 import { DataTable, DataTableSortStatus } from "mantine-datatable";
 import { ActionIcon, Group, Paper, Text } from "@mantine/core";
 import { IconEdit, IconEye, IconTrash } from "@tabler/icons-react";
+import { useQuery, gql } from "@apollo/client";
+import { Post, PostsPage } from "@/application/gql/graphql";
 
 const Posts = () => {
   const [recordPerpage, setRecordPerpage] = useState<number>(10);
@@ -14,22 +16,30 @@ const Posts = () => {
     direction: "asc",
   });
 
-  const [records, setRecords] = useState(sortBy(companies, "name"));
+  const query = gql`
+    {
+      posts(options: { paginate: { limit: 10 } }) {
+        data {
+          id
+          title
+          user {
+            id
+            name
+          }
+        }
+      }
+    }
+  `;
 
-  useEffect(() => {
-    const data = sortBy(companies, sortStatus.columnAccessor);
-    setRecords(sortStatus.direction === "desc" ? data.reverse() : data);
-  }, [sortStatus]);
+  const { data, loading } = useQuery<{ posts: PostsPage }>(query);
 
   return (
     <>
       <Paper shadow="xs">
         <DataTable
           columns={[
-            { accessor: "name", sortable: true },
-            { accessor: "streetAddress", sortable: true },
-            { accessor: "city", sortable: true },
-            { accessor: "state", sortable: true },
+            { accessor: "title", sortable: true },
+            { accessor: "author" },
             {
               accessor: "actions",
               title: <Text mr="xs">Row actions</Text>,
@@ -58,7 +68,10 @@ const Posts = () => {
               ),
             },
           ]}
-          records={records}
+          records={data?.posts.data?.map((post) => ({
+            title: post?.title,
+            author: post?.user?.name,
+          }))}
           recordsPerPage={recordPerpage}
           recordsPerPageOptions={[10, 50, 100]}
           onRecordsPerPageChange={setRecordPerpage}
@@ -67,6 +80,11 @@ const Posts = () => {
           onPageChange={setPage}
           sortStatus={sortStatus}
           onSortStatusChange={setSortStatus}
+          //   Loading
+          fetching={loading}
+          loaderVariant="oval"
+          loaderSize="xl"
+          loaderBackgroundBlur={2}
         />
       </Paper>
     </>
