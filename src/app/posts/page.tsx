@@ -1,12 +1,11 @@
 "use client";
-import React, { useEffect, useState } from "react";
-import sortBy from "lodash/sortBy";
-import companies from "./data.json";
-import { DataTable, DataTableSortStatus } from "mantine-datatable";
+import { PostsPage } from "@/application/gql/graphql";
+import { gql, useQuery } from "@apollo/client";
 import { ActionIcon, Group, Paper, Text } from "@mantine/core";
 import { IconEdit, IconEye, IconTrash } from "@tabler/icons-react";
-import { useQuery, gql } from "@apollo/client";
-import { Post, PostsPage } from "@/application/gql/graphql";
+import { DataTable, DataTableSortStatus } from "mantine-datatable";
+import { useState } from "react";
+import companies from "./data.json";
 
 const Posts = () => {
   const [recordPerpage, setRecordPerpage] = useState<number>(10);
@@ -17,8 +16,8 @@ const Posts = () => {
   });
 
   const query = gql`
-    {
-      posts(options: { paginate: { limit: 10 } }) {
+    query GET_POSTS($limit: Int) {
+      posts(options: { paginate: { limit: $limit } }) {
         data {
           id
           title
@@ -31,7 +30,9 @@ const Posts = () => {
     }
   `;
 
-  const { data, loading } = useQuery<{ posts: PostsPage }>(query);
+  const { data, loading } = useQuery<{ posts: PostsPage }>(query, {
+    variables: { limit: recordPerpage },
+  });
 
   return (
     <>

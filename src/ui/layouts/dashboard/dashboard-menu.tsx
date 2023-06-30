@@ -28,6 +28,7 @@ const DashboardMenu: React.FC<IDashboardProp> = ({ opened }) => {
             component={Link}
             href={item.href}
             active={pathName === item.href}
+            icon={<item.icon />}
           />
         ))}
       </Navbar.Section>
