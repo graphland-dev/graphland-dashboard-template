@@ -1,3 +1,5 @@
+// Tutorial: https://codevoweb.com/setup-and-use-nextauth-in-nextjs-13-app-directory/
+
 import { env } from "@/application/config/t3-env.config";
 import { addSeconds } from "date-fns";
 import jwt_decode from "jwt-decode";
