@@ -1,5 +1,5 @@
+import AppGlobalProvider from "@/application/providers/AppGlobalProvider";
 import "@/styles/globals.css";
-import MantainRegistry from "@/application/utils/MantainRegistry";
 import DashboardLayout from "@/ui/layouts/dashboard/dashboard";
 import React, { PropsWithChildren } from "react";
 
@@ -29,9 +29,9 @@ const RootLayout: React.FC<PropsWithChildren> = ({ children }) => {
   return (
     <html lang="en">
       <body>
-        <MantainRegistry>
+        <AppGlobalProvider>
           <DashboardLayout>{children}</DashboardLayout>
-        </MantainRegistry>
+        </AppGlobalProvider>
       </body>
     </html>
   );

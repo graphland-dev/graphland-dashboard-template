@@ -6,7 +6,7 @@ import {
   MantineProvider,
 } from "@mantine/core";
 import React, { PropsWithChildren, useState } from "react";
-import emotionCache from "./emotion-cache";
+import emotionCache from "../utils/emotion-cache";
 import { useServerInsertedHTML } from "next/navigation";
 import { CacheProvider } from "@emotion/react";
 import { useLocalStorage } from "@mantine/hooks";
