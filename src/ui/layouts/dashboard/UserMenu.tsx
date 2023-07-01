@@ -3,9 +3,10 @@
 import { confirmModal } from "@/application/common/confirm/confirm";
 import { Avatar, Menu } from "@mantine/core";
 import { IconLogout, IconSettings } from "@tabler/icons-react";
-import { signOut } from "next-auth/react";
+import { signOut, useSession } from "next-auth/react";
 
 const UserMenu = () => {
+  const { data } = useSession();
   const handleLogout = () => {
     confirmModal({
       title: "Sure to logout?",
@@ -20,7 +21,7 @@ const UserMenu = () => {
     <Menu shadow="md" width={200}>
       <Menu.Target>
         <Avatar variant="filled" color={"blue"} className="cursor-pointer">
-          R
+          {data?.user?.name?.[0]}
         </Avatar>
       </Menu.Target>
 

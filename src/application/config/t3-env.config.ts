@@ -10,6 +10,7 @@ export const env = createEnv({
     NODE_ENV: z.string().default("development"),
     IDENTITY_SERVER_HOST: z.string().url(),
     IDENTITY_APPID: z.string(),
+    IDENTITY_ORIGIN: z.string(),
 
     NEXTAUTH_SECRET:
       process.env.NODE_ENV === "production"
@@ -43,6 +44,7 @@ export const env = createEnv({
     NEXTAUTH_URL: process.env.NEXTAUTH_URL,
     IDENTITY_APPID: process.env.IDENTITY_APPID,
     IDENTITY_SERVER_HOST: process.env.IDENTITY_SERVER_HOST,
+    IDENTITY_ORIGIN: process.env.IDENTITY_ORIGIN,
     NEXT_PUBLIC_GRAPHQL_API_URL: process.env.NEXT_PUBLIC_GRAPHQL_API_URL,
   },
 });
