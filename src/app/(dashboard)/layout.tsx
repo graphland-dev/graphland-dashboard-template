@@ -8,6 +8,7 @@ const Layout: React.FC<PropsWithChildren> = ({ children }) => {
   const { status } = useSession({
     required: true,
   });
+
   return (
     <div className="relative">
       <LoadingOverlay visible={status === "loading"} overlayBlur={100} />
