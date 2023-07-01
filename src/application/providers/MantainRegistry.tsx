@@ -5,6 +5,7 @@ import {
   ColorSchemeProvider,
   MantineProvider,
 } from "@mantine/core";
+import { ModalsProvider } from "@mantine/modals";
 import React, { PropsWithChildren, useState } from "react";
 import emotionCache from "../utils/emotion-cache";
 import { useServerInsertedHTML } from "next/navigation";
@@ -51,7 +52,7 @@ const MantainRegistry: React.FC<PropsWithChildren> = ({ children }) => {
             }),
           }}
         >
-          {children}
+          <ModalsProvider>{children}</ModalsProvider>
         </MantineProvider>
       </ColorSchemeProvider>
     </CacheProvider>

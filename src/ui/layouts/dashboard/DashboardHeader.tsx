@@ -10,10 +10,9 @@ import {
   IconSunHigh,
 } from "@tabler/icons-react";
 import { useColorScheme } from "@mantine/hooks";
+import ThemeSwitcherMenu from "./ThemeSwitcherMenu";
 
 const DashboardHeader: React.FC<PropsWithChildren> = ({ children }) => {
-  const preferredColorScheme = useColorScheme();
-  const { colorScheme, toggleColorScheme } = useMantineColorScheme();
   return (
     <Header
       height={60}
@@ -24,36 +23,7 @@ const DashboardHeader: React.FC<PropsWithChildren> = ({ children }) => {
     >
       {children}
       <div className="flex items-center gap-4">
-        <Menu shadow="md" width={200}>
-          <Menu.Target>
-            {colorScheme === "dark" ? (
-              <IconMoon className="cursor-pointer" />
-            ) : (
-              <IconSunHigh className="cursor-pointer" />
-            )}
-          </Menu.Target>
-
-          <Menu.Dropdown>
-            <Menu.Item
-              onClick={() => toggleColorScheme("light")}
-              icon={<IconSunHigh size={14} />}
-            >
-              Light
-            </Menu.Item>
-            <Menu.Item
-              onClick={() => toggleColorScheme("dark")}
-              icon={<IconMoon size={14} />}
-            >
-              Dark
-            </Menu.Item>
-            <Menu.Item
-              onClick={() => toggleColorScheme(preferredColorScheme)}
-              icon={<IconDeviceLaptop size={14} />}
-            >
-              System
-            </Menu.Item>
-          </Menu.Dropdown>
-        </Menu>
+        <ThemeSwitcherMenu />
         <UserMenu />
       </div>
     </Header>
