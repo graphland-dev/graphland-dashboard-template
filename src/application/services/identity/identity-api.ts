@@ -57,6 +57,7 @@ export const accessTokenAPI = async (
   const response = await api.json();
 
   if (api.status !== 201) {
+    console.log(response.error);
     throw new Error(response.error);
   }
   return response;

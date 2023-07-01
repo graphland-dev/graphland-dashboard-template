@@ -9,7 +9,6 @@ export interface IAuthUser {
   email_verified: boolean;
   //   roles: string[];
   //   permissioms: string[];
-  vendorId: string;
 }
 
 declare module "next-auth" {

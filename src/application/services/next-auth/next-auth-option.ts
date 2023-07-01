@@ -33,7 +33,6 @@ export const nextAuthOptions: NextAuthOptions = {
             name: decodedUser?.name,
             email_verified: decodedUser?.email_verified,
             email: decodedUser?.email,
-            vendorId: decodedUser?.meta["meta:vendorIds"][0],
           },
         };
 
