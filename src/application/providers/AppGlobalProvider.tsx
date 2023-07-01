@@ -15,5 +15,6 @@ const AppGlobalProvider: React.FC<PropsWithChildren> = ({ children }) => {
     </ApolloProvider>
   );
 };
+//
 
 export default AppGlobalProvider;
