@@ -3,14 +3,14 @@ import { ApolloProvider } from "@apollo/client";
 import React, { PropsWithChildren } from "react";
 import { apolloClient } from "../utils/clients/apollo.client";
 import MantainRegistry from "./MantainRegistry";
-import { SessionProvider } from "next-auth/react";
+import NextAuthProvider from "./NextAuthProvider";
 
 const AppGlobalProvider: React.FC<PropsWithChildren> = ({ children }) => {
   return (
     <ApolloProvider client={apolloClient}>
-      <SessionProvider>
+      <NextAuthProvider>
         <MantainRegistry>{children}</MantainRegistry>
-      </SessionProvider>
+      </NextAuthProvider>
     </ApolloProvider>
   );
 };

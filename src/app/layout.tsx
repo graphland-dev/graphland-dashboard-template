@@ -1,8 +1,9 @@
 import AppGlobalProvider from "@/application/providers/AppGlobalProvider";
 import "@/styles/globals.css";
+import { type Metadata } from "next";
 import React, { PropsWithChildren } from "react";
 
-export const metadata = {
+export const metadata: Metadata = {
   title: {
     template: "%s | Acme",
     default: "Acme",
